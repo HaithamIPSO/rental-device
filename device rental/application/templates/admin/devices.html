@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Admin-Devices</title>
+{% endblock %}
+
+
+{% block body%}
+
+<center>
+    <div class="jumbotron">
+        <h1>All Devices</h1>
+    </div>
+    <button type="button" class="btn btn-primary float-right mr-5 mt-4" data-toggle="modal" data-target="#exampleModal">
+        Add
+       </button>
+       
+    <table class="table table-dark" style="width: 60%;">
+        <thead>
+          <tr>
+         
+            <th scope="col">DeviceName</th>
+            <th scope="col">DeviceType</th>
+            <th scope="col">Manufacture</th>
+            <th scope="col">OS</th>
+
+           
+            <th scope="col">#</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+            {% for device in devices %}
+          <tr>
+          
+            <td>{{ device.DeviceName }}</td>
+            <td>{{ device.ProductType }}</td>
+            <td>{{ device.Manufacture }}</td>
+            <td>{{ device.OS }}</td>
+         
+           
+            <td>
+                <a href="{{ url_for('admin.DeleteDevice',id=device.device_id) }}" class="btn btn-danger">Delete</a>
+            </td>
+            
+
+          </tr>
+
+          {% endfor %}
+        
+        </tbody>
+      </table>
+</center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Device</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="{{ url_for('admin.Device') }}">
+                {{ form.hidden_tag() }}
+             
+                <fieldset class="form-group">
+                   
+                    <div class="form-group" style="width:100%">
+                        
+                        {{ form.DeviceName.label(class="form-control-label float-left") }}
+                        {% if form.DeviceName.errors %}
+                            {{ form.DeviceName(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.DeviceName.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.DeviceName(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group" style="width:100%">
+                        {{ form.Manufacture.label(class="form-control-label float-left") }}
+                        {% if form.Manufacture.errors %}
+                            {{ form.Manufacture(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.Manufacture.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.Manufacture(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+
+
+
+
+                    <div class="form-group" style="width:100%">
+                        {{ form.ProductType.label(class="form-control-label float-left") }}
+                        {% if form.ProductType.errors %}
+                            {{ form.ProductType(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.ProductType.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.ProductType(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+
+
+                    
+                    <div class="form-group" style="width:100%">
+                        {{ form.OS.label(class="form-control-label float-left") }}
+                        {% if form.OS.errors %}
+                            {{ form.OS(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.OS.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.OS(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                  
+                </fieldset>
+               
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+        
+    </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

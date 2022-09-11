@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Devices</title>
+{% endblock %}
+
+
+{% block body%}
+
+<center>
+    <div class="jumbotron">
+        <h1>All Devices</h1>
+    </div>
+ 
+       
+    <table class="table table-dark" style="width: 60%;">
+        <thead>
+          <tr>
+         
+            <th scope="col">DeviceName</th>
+            <th scope="col">DeviceType</th>
+            <th scope="col">Manufacture</th>
+            <th scope="col">OS</th>
+            <th scope="col">#</th>
+
+           
+            
+           
+          </tr>
+        </thead>
+        <tbody>
+            {% for device in devices %}
+          <tr>
+          
+            <td>{{ device.DeviceName }}</td>
+            <td>{{ device.ProductType }}</td>
+            <td>{{ device.Manufacture }}</td>
+            <td>{{ device.OS }}</td>
+         
+           
+            <td>
+                <a href="{{ url_for('main.BookDevice',device_id=device.device_id) }}" class="btn btn-success">Book</a>
+
+            </td>
+         
+            
+
+          </tr>
+
+          {% endfor %}
+        
+        </tbody>
+      </table>
+</center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

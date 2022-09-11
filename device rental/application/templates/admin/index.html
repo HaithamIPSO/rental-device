@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Admin-Home</title>
+{% endblock %}
+
+
+{% block body%}
+<center>
+    <div class="jumbotron">
+        <h1>All Users</h1>
+    </div>
+
+    <table class="table table-dark" style="width: 60%;">
+        <thead>
+          <tr>
+         
+            <th scope="col">Firstname</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Gender</th>
+
+            <th scope="col">Email</th>
+            <th scope="col">#</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+          <tr>
+          
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.phone_number }}</td>
+            <td>{{ user.gender }}</td>
+         
+            <td>{{ user.email }}</td>
+            <td>
+              
+                <a href="{{ url_for('admin.DeleteUser',id=user.id) }}" class="btn btn-danger">Delete</a>
+            </td>
+            
+
+          </tr>
+
+          {% endfor %}
+        
+        </tbody>
+      </table>
+</center>
+
+{% endblock %}

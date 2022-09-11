@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Book Device</title>
+{% endblock %}
+
+
+{% block body%}
+<div class="content-section" style='margin-top:50px'>
+    <center>
+
+    <form method="POST" action="{{ url_for('main.BookDevice',device_id=device_id) }}">
+        {{ form.hidden_tag() }}
+     
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Book Device</legend>
+
+
+            <div class="form-group" style="width:40%">
+                
+                {{ form.ReserveDate.label(class="form-control-label float-left") }}
+                {% if form.ReserveDate.errors %}
+                    {{ form.ReserveDate(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.ReserveDate.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.ReserveDate(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+            <div class="form-group" style="width:40%">
+                
+                {{ form.ReturnDate.label(class="form-control-label float-left") }}
+                {% if form.ReturnDate.errors %}
+                    {{ form.ReturnDate(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.ReturnDate.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.ReturnDate(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+
+            <div class="form-group" style="width:40%">
+                
+                {{ form.PickupDate.label(class="form-control-label float-left") }}
+                {% if form.PickupDate.errors %}
+                    {{ form.PickupDate(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.PickupDate.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.PickupDate(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+            <div class="form-group" style="width:40%">
+                {{ form.Reason.label(class="form-control-label float-left") }}
+                {% if form.Reason.errors %}
+                    {{ form.Reason(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.Reason.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.Reason(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            
+
+
+         
+
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+        
+    </form>
+
+</center>
+
+</div>
+{% endblock %}

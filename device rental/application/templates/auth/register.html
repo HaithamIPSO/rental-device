@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Register</title>
+{% endblock %}
+
+
+{% block body%}
+<div class="content-section" style='margin-top:50px'>
+    <center>
+
+    <form method="POST" action="{{ url_for('auth.Register') }}">
+        {{ form.hidden_tag() }}
+     
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Register</legend>
+
+
+            <div class="form-group" style="width:40%">
+                
+                {{ form.firstname.label(class="form-control-label float-left") }}
+                {% if form.firstname.errors %}
+                    {{ form.firstname(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.firstname.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.firstname(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+            <div class="form-group" style="width:40%">
+                
+                {{ form.lastname.label(class="form-control-label float-left") }}
+                {% if form.lastname.errors %}
+                    {{ form.lastname(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.lastname.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.lastname(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+
+            <div class="form-group" style="width:40%">
+                
+                {{ form.email.label(class="form-control-label float-left") }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+            <div class="form-group" style="width:40%">
+                {{ form.password.label(class="form-control-label float-left") }}
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.password(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            
+
+
+            <div class="form-group" style="width:40%">
+                
+                {{ form.gender.label(class="form-control-label float-left") }}
+                {% if form.gender.errors %}
+                    {{ form.gender(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.gender.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.gender(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+            <div class="form-group" style="width:40%">
+                
+                {{ form.phone.label(class="form-control-label float-left") }}
+                {% if form.phone.errors %}
+                    {{ form.phone(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.phone.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.phone(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+            <div class="form-group" style="width:40%">
+                
+                {{ form.age.label(class="form-control-label float-left") }}
+                {% if form.age.errors %}
+                    {{ form.age(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.age.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.age(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+        
+    </form>
+
+</center>
+
+</div>
+{% endblock %}

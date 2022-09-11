@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Home</title>
+{% endblock %}
+
+
+{% block body%}
+<center>
+    <div class="jumbotron">
+        <h1>Your Booked Orders</h1>
+    </div>
+   
+       
+    <table class="table table-dark" style="width: 60%;">
+        <thead>
+          <tr>
+        
+         
+           
+            <th scope="col">Device Name</th>
+            <th scope="col">Reserve Date</th>
+            <th scope="col">PickUp Date</th>
+
+            <th scope="col">Return Date</th>
+            <th scope="col">Reason</th>
+            <th scope="col">Status</th>
+           
+          
+           
+          </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+          <tr>
+            
+          
+           
+            <td>{{ order.DeviceName }}</td>
+            <td>{{ order.reserve_date }}</td>
+            <td>{{ order.pickup_date }}</td>
+         
+            <td>{{ order.return_date }}</td>
+            <td>{{ order.reason }}</td>
+        
+            <td>{{ order.status }}</td>
+         
+          
+
+          </tr>
+
+          {% endfor %}
+        
+        </tbody>
+      </table>
+</center>
+
+{% endblock %}
